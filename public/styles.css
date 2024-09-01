@@ -23,8 +23,13 @@ table {
     background-color: #fff;
 }
 
+caption {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
 thead {
-    background-color: #007bff; /* Keep this color if you want a distinct header, or change to another color */
+    background-color: #007bff;
     color: #fff;
 }
 
@@ -40,6 +45,7 @@ tbody tr {
 tbody td {
     padding: 10px;
     text-align: left;
+    border: 1px solid #ddd; /* Added border */
 }
 
 tbody tr:nth-child(even) {
@@ -76,9 +82,11 @@ button:hover {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+
+/* Tablets (portrait and landscape) */
+@media (min-width: 600px) and (max-width: 1024px) {
     table {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     thead th, tbody td {
@@ -92,5 +100,41 @@ button:hover {
     button {
         margin-left: 0;
         margin-top: 10px;
+    }
+}
+
+/* Mobile phones (portrait) */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    thead th, tbody td {
+        padding: 8px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+/* Desktops */
+@media (min-width: 1024px) {
+    table {
+        font-size: 18px;
+    }
+
+    thead th, tbody td {
+        padding: 12px;
     }
 }
