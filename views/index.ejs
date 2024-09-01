@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <h1>Welcome to <%= title %></h1>
+    <table id="dataTable" class="display">
+        <thead>
+            <tr>
+                <th>Sr.</th>
+                <th>Recruiter Code</th>
+                <th>First</th>
+                <th>Middle</th>
+                <th>Last</th>
+                <th>Application Code</th>
+                <th>Position Applied</th>
+                <th>Mobile Number</th>
+                <th>Email ID</th>
+                <th>Payment Receipt Number</th>
+                <th>Qualified / Disqualified</th>
+                <th>Remarks</th>
+                <th>Supporting Documents Checked by (Ethos' Staff Name)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(candidate => { %>
+                <tr>
+                    <td><%= candidate["Sr."] %></td>
+                    <td><%= candidate["Recruiter Code"] %></td>
+                    <td><%= candidate["First"] %></td>
+                    <td><%= candidate["Middle"] %></td>
+                    <td><%= candidate["Last"] %></td>
+                    <td><%= candidate["Application Code"] %></td>
+                    <td><%= candidate["Position Applied"] %></td>
+                    <td><%= candidate["Mobile Number"] %></td>
+                    <td><%= candidate["Email ID"] %></td>
+                    <td><%= candidate["Payment Receipt Number"] %></td>
+                    <td><%= candidate["Qualified /Disqualified"] %></td>
+                    <td><%= candidate["Remarks"] %></td>
+                    <td><%= candidate["Supporting Documents Checked by (Ethos' Staff Name)"] %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <div>
+        <% if (currentPage > 1) { %>
+            <a href="?page=<%= currentPage - 1 %>">Previous</a>
+        <% } %>
+        <span>Page <%= currentPage %> of <%= totalPages %></span>
+        <% if (currentPage < totalPages) { %>
+            <a href="?page=<%= currentPage + 1 %>">Next</a>
+        <% } %>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                "paging": true,
+                "searching": true,
+                "info": true,
+                "ordering": true
+            });
+        });
+    </script>
+</body>
+</html>
